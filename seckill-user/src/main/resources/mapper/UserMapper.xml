@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+    TODO: 这里的 namespace 必须对应 Mapper 接口的全限定名 
+-->
+<mapper namespace="com.seckill.user.mapper.UserMapper">
+
+    <!-- 
+        TODO: 编写 resultMap (可选)，如果数据库字段 user_name 和实体字段 username 能够自动映射，可以不写。
+        但通常建议写一个 BaseResultMap。
+    -->
+
+    <!-- 
+        编写 insert 语句
+        提示：insert into user (...) values (...)
+    -->
+    <insert id="insert" parameterType="com.seckill.common.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user (username, password, email, age, create_time)
+            VALUES (#{username}, #{password}, #{email}, #{age}, #{createTime})
+    </insert>
+
+    <!-- 
+        TODO: 编写 delete 语句 
+        提示：delete from user where id = #{id}
+    -->
+    <delete id="deleteById">
+        delete from user where id = #{id}
+    </delete>
+
+    <!-- 
+        编写 update 语句
+        提示：update user set ... where id = #{id}
+    -->
+    <update id="update" parameterType="com.seckill.common.entity.User">
+        update user
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <update id="updateById" parameterType="com.seckill.common.entity.User">
+        update user set
+                        username = #{username},
+                        password = #{password},
+                        email = #{email},
+                        age = #{age},
+                        create_time = #{createTime}
+        where id = #{id}
+    </update>
+
+    <!--
+        编写 selectById 语句
+        提示：select * from user where id = #{id}
+    -->
+    <select id="selectById" resultType="com.seckill.common.entity.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!-- 
+        TODO: 编写 selectList 语句 (分页)
+        提示：select * from user limit #{offset}, #{limit}
+    -->
+    <select id="selectList" resultType="com.seckill.common.entity.User">
+        <!-- 请在此处编写 SQL -->
+    </select>
+
+    <select id="selectByUsername" resultType="com.seckill.common.entity.User">
+        select * from user where username = #{username}
+    </select>
+
+
+</mapper>

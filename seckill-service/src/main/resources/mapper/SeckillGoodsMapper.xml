@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.service.mapper.SeckillGoodsMapper">
+
+    <!-- 用乐观锁更新商品表 -->
+    <update id="decreaseStock">
+        UPDATE seckill_goods
+        SET stock_count = stock_count - 1
+        WHERE id = #{id} AND stock_count > 0
+    </update>
+
+    <!-- 根据id查询 -->
+    <select id="selectById" resultType="com.seckill.common.entity.SeckillGoods">
+        SELECT 
+            id, 
+            goods_name as goodsName, 
+            stock_count as stockCount 
+        FROM seckill_goods 
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultType="com.seckill.common.entity.SeckillGoods">
+        select * from seckill_goods
+    </select>
+
+</mapper>

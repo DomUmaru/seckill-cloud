@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.service.mapper.SeckillOrderMapper">
+
+    <!-- 插入订单 -->
+    <insert id="insert" parameterType="com.seckill.common.entity.SeckillOrder" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO seckill_order (user_id, goods_id, create_time)
+        VALUES (#{userId}, #{goodsId}, #{createTime})
+    </insert>
+
+    <!-- 防重查询 -->
+    <select id="selectByUserIdAndGoodsId" resultType="com.seckill.common.entity.SeckillOrder">
+        SELECT 
+            id, 
+            user_id as userId, 
+            goods_id as goodsId, 
+            create_time as createTime 
+        FROM seckill_order 
+        WHERE user_id = #{userId} AND goods_id = #{goodsId}
+    </select>
+
+    <select id="countByUserIdAndGoodsId" resultType="java.lang.Integer">
+        select count(1) from seckill_order
+        where user_id = #{userId} and goods_id = #{goodsId}
+    </select>
+
+</mapper>

@@ -1,0 +1,41 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: seckill-service # 服务名 (Nacos 用的)
+
+  # 1. 数据库配置 (必须补全！)
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cruddemodb?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true
+    username: root
+    password: password
+
+  # 2. Redis 配置 (你的 StockWarmup 需要用)
+  data:
+    redis:
+      host: localhost       # Redis 服务器地址
+      port: 6379            # Redis 默认端口
+      # 如果你没设置密码，就留空；设置了就填
+      database: 0           # Redis 默认有 16 个库 (0-15)，我们用第 0 个
+      timeout: 3000ms       # 连接超时时间
+      lettuce:
+        pool:
+          max-active: 8     # 最大连接数 (并发高时可以调大)
+          max-wait: -1ms    # 最大等待时间 (-1代表一直等)
+          max-idle: 8       # 最大空闲连接
+          min-idle: 0       # 最小空闲连接
+
+  # 3. RocketMQ 配置 (如果你的代码里还没删掉 RocketMQ 相关代码)
+rocketmq:
+  name-server: 127.0.0.1:9876 # 刚才辛苦启动的 NameServer
+  producer:
+    group: seckill-group      # 生产者组名，必须填
+    send-message-timeout: 3000 # 发送超时时间
+
+# 4. MyBatis 配置 (至关重要！否则找不到 XML)
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
