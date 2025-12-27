@@ -3,7 +3,11 @@ server:
 spring:
   application:
     name: seckill-service # 服务名 (Nacos 用的)
-
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8858
+        port: 8719
   # 1. 数据库配置 (必须补全！)
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -39,3 +43,8 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+
+#配置可以熔断换个查询接口
+feign:
+  sentinel:
+    enabled: true

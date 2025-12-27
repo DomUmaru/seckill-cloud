@@ -1,0 +1,26 @@
+server:
+  port: 8080 # 网关占领 8080 高地
+
+spring:
+  application:
+    name: seckill-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        # --- 路由规则 1：用户服务 ---
+        - id: user-route
+          # lb = LoadBalance (负载均衡)，后面接 Nacos 里的服务名
+          uri: lb://seckill-user
+          predicates:
+            # 断言：如果 URL 路径以 /user/ 开头，就转发给 seckill-user
+            - Path=/user/**
+
+        # --- 路由规则 2：秒杀服务 ---
+        - id: seckill-route
+          uri: lb://seckill-service
+          predicates:
+            # 这里的 /test/** 是我们昨天写的测试接口，/seckill/** 是正式接口
+            - Path=/seckill/**, /test/**

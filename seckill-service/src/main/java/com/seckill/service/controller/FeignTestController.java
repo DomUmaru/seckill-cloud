@@ -1,5 +1,6 @@
 package com.seckill.service.controller;
 
+import com.seckill.common.context.UserContext;
 import com.seckill.common.entity.User;
 import com.seckill.common.result.Result;
 import com.seckill.service.feign.UserClient;
@@ -22,6 +23,12 @@ public class FeignTestController {
         System.out.println("正在发起 RPC 调用，目标：seckill-user...");
         Result<User> result = userClient.getUserById(id);
         System.out.println("调用结束，结果：" + result);
+
+        // --- 新增代码 ---
+        Long currentUserId = UserContext.getUserId();
+        System.out.println("当前登录用户 ID (从网关透传): " + currentUserId);
+        // ----------------
+
         return result;
     }
 }

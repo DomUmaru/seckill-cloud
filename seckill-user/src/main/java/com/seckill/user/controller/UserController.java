@@ -4,6 +4,7 @@ package com.seckill.user.controller;
 import com.seckill.common.dto.UserDTO;
 import com.seckill.common.entity.User;
 import com.seckill.common.result.Result;
+import com.seckill.common.util.JwtUtil;
 import com.seckill.common.vo.UserVO;
 import com.seckill.user.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -120,5 +121,18 @@ public class UserController {
         User user = new User();
         BeanUtils.copyProperties(userVO, user);
         return Result.success(user);
+    }
+
+    /**
+     * 模拟登录接口 (只为测试生成 Token 用)
+     * GET /user/login/mock/{id}
+     */
+    @GetMapping("/login/mock/{id}")
+    public Result<String> mockLogin(@PathVariable("id") Long id) {
+        // 真正场景查数据库校验密码...
+        // 这里直接发证
+        System.out.println("获取JWT Token");
+        String token = JwtUtil.createToken(id);
+        return Result.success(token);
     }
 }

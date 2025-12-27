@@ -993,7 +993,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="276" parent="1" name="cruddemodb">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-12-25.22:13:20</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-12-27.18:52:30</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="277" parent="1" name="dp1">

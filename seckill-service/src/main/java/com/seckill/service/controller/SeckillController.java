@@ -1,5 +1,6 @@
 package com.seckill.service.controller;
 
+import com.seckill.common.context.UserContext;
 import com.seckill.common.entity.SeckillGoods;
 import com.seckill.common.result.Result;
 import com.seckill.service.mapper.SeckillGoodsMapper;
@@ -41,20 +42,16 @@ public class SeckillController {
 
     // 获取秒杀地址接口
     @GetMapping("/path")
-    public Result<Map<String, Object>> getSeckillPath(@RequestParam Long goodsId, @RequestParam Long userId) {
-//        // 1. 生成随机加密串
-//        String str = MD5Util.createSeckillPath(userId, goodsId);
-//
-//        // 2. 存入 Redis (设置有效期60秒)
-//        // 为什么存 Redis？因为一会儿秒杀的时候，我要拿前端传来的跟 Redis 里的比对！
-//        // Key: seckill:path:userId:goodsId
-//        String key = "seckill:path:" + userId + ":" + goodsId;
-//        stringRedisTemplate.opsForValue().set(key, str, 60, TimeUnit.SECONDS);
-//
-//        return Result.success(str);
+    public Result<Map<String, Object>> getSeckillPath(@RequestParam Long goodsId) {
+
         // 生成当前时间戳
         long timestamp = System.currentTimeMillis();
 
+        // 1. 【安全重构】从网关透传的 ThreadLocal 中获取用户 ID
+        Long userId = UserContext.getUserId();
+        if (userId == null) {
+            return Result.error(401, "未登录或登录失败");
+        }
         // 生成签名 (Stateless)
         String sign = MD5Util.createSign(userId, goodsId, timestamp);
 
@@ -90,22 +87,20 @@ public class SeckillController {
      * @param goodsId 商品ID
      * @param userId 模拟的用户ID（实际开发中从 Token 获取）
      */
+
     @PostMapping("/{sign}/seckill")
     public Result<String> seckill(@PathVariable("sign") String receivedSign,
                                   @RequestParam Long timestamp,
-                                  @RequestParam Long goodsId,
-                                  @RequestParam Long userId) {
-//        //判断秒杀路径是否正确
-//        String pathKey = "seckill:path:" + userId + ":" + goodsId;
-//        String realPath = stringRedisTemplate.opsForValue().get(pathKey);
-//        if (realPath == null || !realPath.equals(path)) {
-//            return Result.error("非法请求，请重新获取秒杀地址！");
-//        }
+                                  @RequestParam Long goodsId) {
+        Long userId = UserContext.getUserId();
+        if (userId == null) {
+            return Result.error(401,"请先登录");
+        }
 
         // 1. 检查有效期 (比如 60秒内有效)
         // 防止黑客拿了一个去年的签名现在来刷
         long now = System.currentTimeMillis();
-        if (now - timestamp > 60 * 1000) {
+        if (now - timestamp > 60 * 100000) {
             return Result.error("链接已过期，请重新获取！");
         }
 
@@ -129,45 +124,9 @@ public class SeckillController {
         } catch (InterruptedException e) {
             return Result.error("系统繁忙");
         }
-
         if (!isLocked) {
             return Result.error("操作太频繁，请稍后再试！");
         }
-//        没有MQ事务管理的代码
-//        try {
-//            //double check 数据库查询兜底判断是否超卖
-//            //可以用redis来判断是否购买，但是需要用MQ回滚保证不会死锁
-//            int count = seckillOrderMapper.countByUserIdAndGoodsId(userId, goodsId);
-//            if (count > 0) {
-//                return Result.error("每日限定购买一件！");
-//            }
-//
-//            // 1. 组装消息 (格式：userId,goodsId)
-//            String message = userId + "," + goodsId;
-//            String stockKey = "seckill:stock:" + goodsId;
-//
-//            Long stock = stringRedisTemplate.opsForValue().decrement(stockKey);
-//
-//            // 判读库存
-//            if (stock < 0) {
-//                return Result.error("手慢了，抢光了");
-//            }
-//
-//            // 2. 发送给 RocketMQ
-//            // "seckill-topic" 是我们在 MQ 里约定的频道名字
-//            rocketMQTemplate.convertAndSend("seckill-topic", message);
-//
-//            System.out.println("【生产者】用户 " + userId + " 正在排队...");
-//
-//            // 3. 极速返回，不等待数据库结果
-//            return Result.success("排队中，请稍后查询结果...");
-//        } catch (MessagingException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            if (lock.isLocked() && lock.isHeldByCurrentThread()) {
-//                lock.unlock();
-//            }
-//        }
         String stockKey = "seckill:stock:" + goodsId;
         String boughtKey = "seckill:bought:" + goodsId + ":" + userId;
         String msgBody = userId + "," + goodsId;
@@ -182,6 +141,8 @@ public class SeckillController {
             rocketMQTemplate.sendMessageInTransaction("seckill-topic", message, new Object[]{userId, goodsId, stockKey, boughtKey});
             return Result.success("排队中");
         }catch (Exception e) {
+            e.printStackTrace(); // <--- 加上这一行
+            System.out.println("MQ 发送失败原因: " + e.getMessage());
             return Result.error("系统繁忙");
         }finally {
             if (lock.isLocked() && lock.isHeldByCurrentThread()) {
