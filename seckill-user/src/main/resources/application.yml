@@ -5,9 +5,9 @@ spring:
     name: seckill-user # Nacos 里的名字，Feign 调用时就靠这个名字找人！
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cruddemodb?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true
     username: root
-    password: password
+    password: root
   cloud:
     nacos:
       discovery:

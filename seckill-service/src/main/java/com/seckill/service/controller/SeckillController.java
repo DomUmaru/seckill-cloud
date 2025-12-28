@@ -42,7 +42,7 @@ public class SeckillController {
 
     // 获取秒杀地址接口
     @GetMapping("/path")
-    public Result<Map<String, Object>> getSeckillPath(@RequestParam Long goodsId) {
+    public Result<Map<String, Object>> getSeckillPath(@RequestParam("goodsId") Long goodsId) {
 
         // 生成当前时间戳
         long timestamp = System.currentTimeMillis();

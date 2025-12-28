@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/321ea625-e9e6-4344-8477-3df300019780/console.sql" value="321ea625-e9e6-4344-8477-3df300019780" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/855132b1-6a63-4010-8562-c855b7ef9600/console.sql" value="855132b1-6a63-4010-8562-c855b7ef9600" />
+    <file url="file://$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillGoodsMapper.java" value="855132b1-6a63-4010-8562-c855b7ef9600" />
+    <file url="file://$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillOrderMapper.java" value="855132b1-6a63-4010-8562-c855b7ef9600" />
     <file url="file://$PROJECT_DIR$/seckill-service/src/main/resources/mapper/SeckillGoodsMapper.xml" value="855132b1-6a63-4010-8562-c855b7ef9600" />
     <file url="file://$PROJECT_DIR$/seckill-service/src/main/resources/mapper/SeckillOrderMapper.xml" value="855132b1-6a63-4010-8562-c855b7ef9600" />
     <file url="file://$PROJECT_DIR$/seckill-user/src/main/resources/mapper/UserMapper.xml" value="855132b1-6a63-4010-8562-c855b7ef9600" />

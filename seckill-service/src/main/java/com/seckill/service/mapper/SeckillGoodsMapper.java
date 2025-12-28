@@ -2,6 +2,8 @@ package com.seckill.service.mapper;
 
 import com.seckill.common.entity.SeckillGoods;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -22,4 +24,7 @@ public interface SeckillGoodsMapper {
     SeckillGoods selectById(Long id);
 
     List<SeckillGoods> selectList();
+
+    @Update("UPDATE seckill_goods SET stock_count = stock_count + 1 WHERE id = #{goodsId}")
+    int restoreStock(@Param("goodsId") Long goodsId);
 }

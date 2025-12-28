@@ -2,25 +2,24 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-252.27397.103">
     <data-source name="@localhost" uuid="855132b1-6a63-4010-8562-c855b7ef9600">
-      <database-info product="MySQL" version="8.0.26" jdbc-version="4.2" driver-name="Amazon Web Services (AWS) Advanced JDBC Wrapper" driver-version="Amazon Web Services (AWS) Advanced JDBC Wrapper 2.3.7 ( Revision: 7591851e8da4e1c705ba232a8bd07824a5cfd276 )" dbms="MYSQL" exact-version="8.0.26" exact-driver-version="2.3">
+      <database-info product="MySQL" version="8.0.44" jdbc-version="4.2" driver-name="Amazon Web Services (AWS) Advanced JDBC Wrapper" driver-version="Amazon Web Services (AWS) Advanced JDBC Wrapper 2.3.7 ( Revision: 7591851e8da4e1c705ba232a8bd07824a5cfd276 )" dbms="MYSQL" exact-version="8.0.44" exact-driver-version="2.3">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
         <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
       </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>master_key</secret-storage>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
             <name qname="@" />
-            <name qname="cruddemodb" />
+            <name qname="seckill" />
           </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>
     <data-source name="0@localhost" uuid="321ea625-e9e6-4344-8477-3df300019780">
-      <database-info product="Redis Standalone" version="3.2.100" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="3.2.100" exact-driver-version="1.5">
+      <database-info product="Redis Standalone" version="8.4.0" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="8.4.0" exact-driver-version="1.5">
         <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />

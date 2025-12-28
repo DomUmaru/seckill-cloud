@@ -4,21 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dfbf608-ec6d-4dcf-99cd-52dae9d65ffd" name="更改" comment="Microservice-Base-V1&#10;1、统一入口（Gateway）&#10;2、服务治理（Nacos）&#10;3、流量卫士（Sentinel）&#10;4、链路容错（Feign+Sentinel）">
-      <change afterPath="$PROJECT_DIR$/seckill-search/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-search/src/main/java/com/seckill/search/SeckillSearchApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-search/src/main/java/com/seckill/search/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-search/src/main/java/com/seckill/search/entity/GoodsDoc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-search/src/main/java/com/seckill/search/repository/GoodsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-search/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="4dfbf608-ec6d-4dcf-99cd-52dae9d65ffd" name="更改" comment="新增查询模块，使用ElasticSearch">
+      <change afterPath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mq/OrderCloseConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/855132b1-6a63-4010-8562-c855b7ef9600.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/855132b1-6a63-4010-8562-c855b7ef9600.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/src/main/java/com/seckill/common/entity/SeckillOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/src/main/java/com/seckill/common/entity/SeckillOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/SeckillGoods.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/SeckillGoods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/SeckillOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/SeckillOrder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/result/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/result/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/util/MD5Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/util/MD5Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/vo/UserVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-common/target/classes/com/seckill/common/vo/UserVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/controller/SeckillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/controller/SeckillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillGoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillGoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mapper/SeckillOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/service/SeckillConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/src/main/java/com/seckill/service/mq/SeckillConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/SeckillServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/SeckillServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/config/StockWarmup.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/config/StockWarmup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/controller/FeignTestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/controller/FeignTestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/controller/SeckillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/controller/SeckillController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/feign/UserClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/feign/UserClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/mapper/SeckillGoodsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/mapper/SeckillGoodsMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/mapper/SeckillOrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/mapper/SeckillOrderMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/service/SeckillConsumer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/service/SeckillTransactionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-service/target/classes/com/seckill/service/service/SeckillTransactionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/SeckillUserApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/SeckillUserApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-user/target/classes/com/seckill/user/service/impl/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +58,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -54,44 +80,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.seckill-service [test].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.SeckillSearchApplication.executor": "Run",
-    "Spring Boot.SeckillServiceApplication.executor": "Run",
-    "Spring Boot.SeckillUserApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Type-umr/Desktop/Spring Cloud/seckill-cloud/seckill-service/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.seckill-service [test].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SeckillSearchApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SeckillServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SeckillUserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Type-umr/Desktop/Spring Cloud/seckill-cloud/seckill-service/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "elasticsearch",
-      "redis",
-      "mysql_aurora"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;elasticsearch&quot;,
+      &quot;redis&quot;,
+      &quot;mysql_aurora&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Type-umr\Desktop\Spring Cloud\seckill-cloud\seckill-service\src\main\resources" />
@@ -123,6 +149,7 @@
           <value>
             <map>
               <entry key="GatewayApplication" value="STOPPED" />
+              <entry key="SeckillSearchApplication" value="STOPPED" />
               <entry key="SeckillServiceApplication" value="STOPPED" />
               <entry key="SeckillUserApplication" value="STOPPED" />
             </map>
@@ -197,7 +224,8 @@
       <workItem from="1766698494284" duration="2620000" />
       <workItem from="1766701133887" duration="4909000" />
       <workItem from="1766706137468" duration="5207000" />
-      <workItem from="1766834187237" duration="13809000" />
+      <workItem from="1766834187237" duration="19949000" />
+      <workItem from="1766944682320" duration="2769000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Cloud 初始化项目">
       <option name="closed" value="true" />
@@ -215,7 +243,23 @@
       <option name="project" value="LOCAL" />
       <updated>1766867661380</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新增查询模块，使用ElasticSearch">
+      <option name="closed" value="true" />
+      <created>1766914189446</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766914189447</updated>
+    </task>
+    <task id="LOCAL-00004" summary="新增查询模块，使用ElasticSearch">
+      <option name="closed" value="true" />
+      <created>1766914550164</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1766914550164</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +291,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Spring Cloud 初始化项目" />
     <MESSAGE value="Microservice-Base-V1&#10;1、统一入口（Gateway）&#10;2、服务治理（Nacos）&#10;3、流量卫士（Sentinel）&#10;4、链路容错（Feign+Sentinel）" />
-    <option name="LAST_COMMIT_MESSAGE" value="Microservice-Base-V1&#10;1、统一入口（Gateway）&#10;2、服务治理（Nacos）&#10;3、流量卫士（Sentinel）&#10;4、链路容错（Feign+Sentinel）" />
+    <MESSAGE value="新增查询模块，使用ElasticSearch" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增查询模块，使用ElasticSearch" />
   </component>
 </project>
