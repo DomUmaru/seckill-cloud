@@ -24,3 +24,8 @@ spring:
           predicates:
             # 这里的 /test/** 是我们昨天写的测试接口，/seckill/** 是正式接口
             - Path=/seckill/**, /test/**
+        # --- 新增：搜索服务路由 ---
+        - id: search-route
+          uri: lb://seckill-search # 目标服务名
+          predicates:
+            - Path=/search/** # 凡是 /search 开头的，都给搜索服务

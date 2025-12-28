@@ -14,6 +14,7 @@
         <module>seckill-common</module>
         <module>seckill-service</module>
         <module>seckill-gateway</module>
+        <module>seckill-search</module>
     </modules>
 
     <properties>

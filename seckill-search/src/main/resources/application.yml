@@ -1,0 +1,16 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: seckill-search
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  # ES 配置
+  elasticsearch:
+    uris: http://localhost:9200
+    connection-timeout: 3s
+    socket-timeout: 3s

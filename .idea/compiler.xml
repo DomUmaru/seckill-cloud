@@ -10,6 +10,7 @@
         <module name="seckill-user" />
         <module name="seckill-common" />
         <module name="seckill-service" />
+        <module name="seckill-search" />
         <module name="seckill-gateway" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="seckill-cloud" options="-parameters" />
       <module name="seckill-common" options="-parameters" />
       <module name="seckill-gateway" options="-parameters" />
+      <module name="seckill-search" options="-parameters" />
       <module name="seckill-service" options="-parameters" />
       <module name="seckill-user" options="-parameters" />
     </option>
